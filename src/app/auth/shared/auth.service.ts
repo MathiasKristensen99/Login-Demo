@@ -11,6 +11,6 @@ export class AuthService {
   constructor(private _http: HttpClient) { }
 
   login(loginInfo: LoginUser): Promise<string> {
-    return this._http.post<string>(environment.api + '/Auth', loginInfo).toPromise();
+    return this._http.post<string>(environment.api + '/Login', loginInfo).toPromise();
   }
 }
