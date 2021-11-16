@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  api: 'https://webshop2021.azurewebsites.net/',
 };
