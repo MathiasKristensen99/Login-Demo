@@ -1,12 +1,12 @@
 <h1>Products:</h1>
 <ul *ngIf="$products | async as productsList">
   <li *ngFor="let product of productsList.list">
-    <a routerLink="update/{{product.id}}">
-     <span class="card-text"> Id: {{product.id}} Name: {{product.name}} </span>
-    </a>
     <button class="delete-button, badge" title="delete product"
             (click)="delete(product.id)">Delete
     </button>
+    <a routerLink="update/{{product.id}}">
+     <span class="card-text"> Id: {{product.id}} Name: {{product.name}} </span>
+    </a>
   </li>
 </ul>
 <nav>
