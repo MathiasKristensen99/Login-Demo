@@ -4,6 +4,7 @@ import {Observable, of} from "rxjs";
 import {Product} from "./product.model";
 import {ProductList} from "./product-list.model";
 import {environment} from "../../../environments/environment";
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,15 @@ export class ProductsService {
   }
 
   getProduct(id: number): Observable<Product> {
-    return this._http.get<Product>(this.productsApi + '/' + id);
+    return this._http.get<Product>(this.productsApi + id);
     //return of({id: 1, name: 'Idiot'});
   }
 
   update(product: Product): Observable<Product> {
-    return this._http.put<Product>(this.productsApi + '/' + product.id, product);
+    return this._http.put<Product>(this.productsApi + product.id, product);
+  }
+
+  addProduct(product: Product): Observable<Product> {
+    return this._http.post<Product>(this.productsApi, product);
   }
 }
