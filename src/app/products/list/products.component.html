@@ -3,6 +3,9 @@
   <li *ngFor="let product of productsList.list">
     <a routerLink="update/{{product.id}}">
      <span class="card-text"> Id: {{product.id}} Name: {{product.name}} </span>
+      <button class="delete-button" title="delete product"
+              (click)="delete(product.id)">
+        Delete</button>
     </a>
   </li>
 </ul>

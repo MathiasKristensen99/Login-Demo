@@ -14,6 +14,11 @@ export class ProductsComponent implements OnInit {
 
   constructor(private _productsService: ProductsService) { }
 
+  delete(id: number): void {
+    this._productsService.deleteProduct(id).subscribe();
+  }
+
+
   ngOnInit(): void {
     this.$products = this._productsService.getProducts();
   }
