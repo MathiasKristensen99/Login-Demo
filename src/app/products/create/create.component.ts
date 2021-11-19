@@ -16,17 +16,23 @@ export class CreateComponent implements OnInit {
   constructor(private _productsService: ProductsService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.$products = this._productsService.getProducts();
+    this.getProducts();
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) {return;}
     this._productsService.addProduct({name} as Product).subscribe(value => {
+      this.getProducts()
     });
   }
 
   btnClick(): void {
     this._router.navigateByUrl('/products')
+    this.getProducts();
+  }
+
+  getProducts(): void {
+    this.$products = this._productsService.getProducts();
   }
 }
