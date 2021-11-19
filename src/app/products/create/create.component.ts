@@ -11,28 +11,20 @@ import {Router} from "@angular/router";
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  $products: Observable<ProductList> | undefined;
 
   constructor(private _productsService: ProductsService, private _router: Router) { }
 
   ngOnInit(): void {
-    this.getProducts();
+
   }
 
   add(name: string): void {
     name = name.trim();
     if (!name) {return;}
     this._productsService.addProduct({name} as Product).subscribe(value => {
-      this.getProducts()
+      this._router.navigateByUrl('/products')
     });
   }
 
-  btnClick(): void {
-    this._router.navigateByUrl('/products')
-    this.getProducts();
-  }
 
-  getProducts(): void {
-    this.$products = this._productsService.getProducts();
-  }
 }
